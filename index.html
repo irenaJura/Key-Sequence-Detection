@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+    // create an empty array and the secret code
+    const pressed = [];
+    const secretCode = 'irena';
+
+    //  push the pressed keys into array
+    //  splice the secret code
+    window.addEventListener('keyup', (e) => {
+        //console.log(e.key);
+        pressed.push(e.key);
+        // start from the end, negative length - 1, trim from there
+        pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+        // joins all elements of an array into a string
+        // includes determines whether one string may be found within another string
+        if(pressed.join('').includes(secretCode)) {
+            cornify_add();
+        }
+        //console.log(pressed);
+    });
+</script>
+</body>
+</html>
